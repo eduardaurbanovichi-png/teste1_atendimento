@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: costar-chat-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false   # definido manualmente no painel do Render, nunca no repositório
+      - key: APP_URL
+        sync: false
